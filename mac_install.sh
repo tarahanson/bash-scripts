@@ -3,6 +3,7 @@
 # OSX pre-reqs
 sudo xcodebuild -license accept
 xcode-select --install
+/Applications/Xcode.app/Contents/MacOS/Xcode -installComponents # required by MacVim
 
 # Show hidden files
 defaults write com.apple.finder AppleShowAllFiles YES
@@ -28,6 +29,19 @@ echo -e "if [ -f `brew --prefix`/etc/bash_completion ]; then\n    . `brew --pref
 # git-aware bash prompt
 brew install bash-git-prompt
 echo -e "if [ -f \"$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh\" ]; then\n    source \"$(brew --prefix)/opt/bash-git-prompt/share/gitprompt.sh\"\nfi" >> ~/.bash_profile
+
+# MacVim & Fish Shell
+brew install macvim --with-lua --HEAD
+echo '/usr/local/bin/fish' | sudo tee -a /etc/shells
+chsh -s /usr/local/bin/fish
+mkdir -p ~/.config/fish/functions
+echo 'function vim' >> ~/.config/fish/functions/vim.fish
+echo '  mvim -v $argv' >> ~/.config/fish/functions/vim.fish
+echo 'end' >> ~/.config/fish/functions/vim.fish
+echo 'function vi' >> ~/.config/fish/functions/vim.fish
+echo '  mvim -v $argv' >> ~/.config/fish/functions/vim.fish
+echo 'end' >> ~/.config/fish/functions/vim.fish
+
 
 # Docker
 brew install docker
