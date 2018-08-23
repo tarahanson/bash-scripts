@@ -66,6 +66,9 @@ source ~/.bashrc
 # Ruby
 echo "gem: --no-document" >> ~/.gemrc
 curl -L https://get.rvm.io | bash -s stable --auto-dotfiles --autolibs=enable --rails
+curl -L --create-dirs -o ~/.config/fish/functions/rvm.fish https://raw.github.com/lunks/fish-nuggets/master/functions/rvm.fish
+echo "rvm default" >> ~/.config/fish/config.fish
+source ~/.config/fish/config.fish
 rvm install 2.5.1
 rvm use 2.5.1 --default
 gem install bundler
