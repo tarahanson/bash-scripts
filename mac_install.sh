@@ -41,6 +41,9 @@ echo 'end' >> ~/.config/fish/functions/vim.fish
 echo 'function vi' >> ~/.config/fish/functions/vim.fish
 echo '  mvim -v $argv' >> ~/.config/fish/functions/vim.fish
 echo 'end' >> ~/.config/fish/functions/vim.fish
+# package manager for Fish shell
+curl -L https://get.oh-my.fish | fish
+
 
 
 # Docker
@@ -73,9 +76,8 @@ rvm install 2.5.1
 rvm use 2.5.1 --default
 gem install bundler
 
-# Node Version Manager
-curl https://raw.githubusercontent.com/creationix/nvm/v0.24.0/install.sh | bash
-source ~/.bashrc
+# Node Version Manager (via oh my fish)
+omf install nvm
 nvm install 10.6.0
 nvm alias default v10.6.0
 
